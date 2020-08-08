@@ -66,6 +66,7 @@ class AsyncDatum<T> implements AsyncInteraction<T> {
         backgroundWork(() -> {
             synchronized (lock) {
                 datumSource.clear();
+                value = defaultValue;
                 new Handler(looper != null ? looper : Looper.getMainLooper()).post(() -> {
                     if (onClear != null)
                         onClear.callback();

@@ -81,6 +81,7 @@ abstract class SecureDatum<T> implements AsyncInteraction<T> {
     @Override
     public final void clear(@Nullable DoneCallback onClear) {
         stringDatum.clear(() -> {
+            value = defaultValue;
             if (onClear != null)
                 onClear.callback();
         });
@@ -107,7 +108,6 @@ abstract class SecureDatum<T> implements AsyncInteraction<T> {
         private Provider.StringSource provider;
         private String key;
         private String encryptedKey;
-        private String value;
         private final Object lock = "lock";
 
         private final DeterministicCipher keyCipher;
@@ -126,6 +126,7 @@ abstract class SecureDatum<T> implements AsyncInteraction<T> {
             backgroundWork(() -> {
                 synchronized (lock) {
                     String encryptedKey = getEncryptedDatumName();
+                    String value;
                     if (!provider.contains(encryptedKey))
                         value = null;
                     else {
@@ -137,8 +138,7 @@ abstract class SecureDatum<T> implements AsyncInteraction<T> {
                             value = decryptedValue;
                         }
                     }
-                    final String finalValue = value;
-                    new Handler(looper != null ? looper : Looper.getMainLooper()).post(() -> onGetValue.onGetValue(finalValue));
+                    new Handler(looper != null ? looper : Looper.getMainLooper()).post(() -> onGetValue.onGetValue(value));
                 }
             });
         }
@@ -153,7 +153,6 @@ abstract class SecureDatum<T> implements AsyncInteraction<T> {
                     encryptedValue = valueCipher.trimmedEncrypt(t);
 
                     provider.setValue(encryptedKey, encryptedValue);
-                    value = t;
                     new Handler(looper != null ? looper : Looper.getMainLooper()).post(() -> {
                         if (onSetValue != null)
                             onSetValue.callback();

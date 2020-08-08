@@ -40,6 +40,7 @@ class SyncDatum<T> implements SyncInteraction<T> {
     @Override
     public final void clear() {
         datumSource.clear();
+        value = defaultValue;
     }
 
     @Override
