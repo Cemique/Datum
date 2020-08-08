@@ -11,7 +11,7 @@ Features
 
 Usage
 -----
-### Synchronous
+#### Synchronous
 ```java
 SyncProvider syncProvider = new SyncProvider() {
     @Override
@@ -25,7 +25,7 @@ String value = stringDatum.getValue();
 stringDatum.clear();
 ```
 
-### Asynchronous
+#### Asynchronous
 ```java
 AsyncProvider asyncProvider = new AsyncProvider() {
     @Override
@@ -45,7 +45,7 @@ floatDatum.clear(()->{
 });
 ```
 
-### Secure
+#### Secure
 Secure datums use async datums behind the scenes.
 ```java
 DeterministicCipher keyCipher = new DeterministicCipher(){...};
@@ -81,3 +81,5 @@ stringSetDatum.clear(()->{
     //datum is removed
 });
 ```
+##### Contribution
+All kinds of contributions are welcomed.
