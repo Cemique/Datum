@@ -1,0 +1,11 @@
+rename async classes to Async...
+caplusate
+cipherException -> a file itself
+other files...
+make final variables
+
+test null & empty string & empty set
+
+add statistics to it
+
+remove primitive...s because all of them must avoid setting null, setting null means clear
