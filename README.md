@@ -17,7 +17,7 @@ SyncProvider syncProvider = new SyncProvider() {
         return context.getSharedPreferences(...);
     }
 };
-StringDatum stringDatum = syncProvider.new StringDatum("key", "default");
+SyncDatum<String> stringDatum = syncProvider.new StringDatum("key", "default");
 stringDatum.setValue("new value");
 String value = stringDatum.getValue();
 stringDatum.clear();
@@ -31,7 +31,7 @@ AsyncProvider asyncProvider = new AsyncProvider() {
         return context.getSharedPreferences(...); //For better performance try to call this function only here. More info: https://stackoverflow.com/a/4371883/6094503
     }
 };
-FloatDatum floatDatum = asyncProvider.new FloatDatum("key", 3.141592f);
+AsyncDatum<Float> floatDatum = asyncProvider.new FloatDatum("key", 3.141592f);
 floatDatum.setValue(8203f, ()->{
     //value is saved
 });
@@ -71,7 +71,7 @@ SecureProvider secureProvider = new SecureProvider() {
 ```
 Then use it:
 ```java
-StringSetDatum stringSetDatum = secureProvider.new StringSetDatum("key", null);
+SecureDatum<Set<String>> stringSetDatum = secureProvider.new StringSetDatum("key", null);
 Set<String> newStringSet = new HashSet<>();
 newStringSet.add("new value");
 stringSetDatum.setValue(newStringSet, () -> {
