@@ -73,7 +73,7 @@ public abstract class SecureProvider {
     }
 
 
-    public class BooleanDatum extends SecureDatum<Boolean> {
+    public class BooleanDatum extends SecureDatumWrapper<Boolean> {
 
         public BooleanDatum(@NonNull String key, @Nullable Boolean defaultValue) {
             super(provider.new StringSource(), keyCipher, valueCipher, key, defaultValue);
@@ -93,7 +93,7 @@ public abstract class SecureProvider {
 
     }
 
-    public class FloatDatum extends SecureDatum<Float> {
+    public class FloatDatum extends SecureDatumWrapper<Float> {
 
         public FloatDatum(@NonNull String key, @Nullable Float defaultValue) {
             super(provider.new StringSource(), keyCipher, valueCipher, key, defaultValue);
@@ -113,7 +113,7 @@ public abstract class SecureProvider {
 
     }
 
-    public class IntegerDatum extends SecureDatum<Integer> {
+    public class IntegerDatum extends SecureDatumWrapper<Integer> {
 
         public IntegerDatum(@NonNull String key, @Nullable Integer defaultValue) {
             super(provider.new StringSource(), keyCipher, valueCipher, key, defaultValue);
@@ -133,7 +133,7 @@ public abstract class SecureProvider {
 
     }
 
-    public class LongDatum extends SecureDatum<Long> {
+    public class LongDatum extends SecureDatumWrapper<Long> {
 
         public LongDatum(@NonNull String key, @Nullable Long defaultValue) {
             super(provider.new StringSource(), keyCipher, valueCipher, key, defaultValue);
@@ -153,7 +153,7 @@ public abstract class SecureProvider {
 
     }
 
-    public class StringDatum extends SecureDatum<String> {
+    public class StringDatum extends SecureDatumWrapper<String> {
 
         public StringDatum(@NonNull String key, @Nullable String defaultValue) {
             super(provider.new StringSource(), keyCipher, valueCipher, key, defaultValue);
@@ -173,7 +173,7 @@ public abstract class SecureProvider {
 
     }
 
-    public class StringSetDatum extends SecureDatum<Set<String>> {
+    public class StringSetDatum extends SecureDatumWrapper<Set<String>> {
 
         public StringSetDatum(@NonNull String key, @Nullable Set<String> defaultValue) {
             super(provider.new StringSource(), keyCipher, valueCipher, key, defaultValue);

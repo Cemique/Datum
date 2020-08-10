@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.cemique.datum.sync.SyncInteraction;
+import com.cemique.datum.sync.SyncDatum;
 import com.cemique.datum.sync.SyncProvider;
 
 import org.junit.Test;
@@ -62,7 +62,7 @@ public class SyncProviderTest {
     private void testSyncDatum(SyncProvider syncProvider, SharedPreferences sharedPreferences, String key) {
 
         Object initValue = defaultValues.get(key);
-        SyncInteraction datum = null;
+        SyncDatum datum = null;
 
         if (initValue instanceof String)
             datum = syncProvider.new StringDatum(key, (String) initValue);

@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.cemique.datum.async.AsyncInteraction;
+import com.cemique.datum.async.AsyncDatum;
 import com.cemique.datum.async.AsyncProvider;
 
 import org.junit.Test;
@@ -62,7 +62,7 @@ public class AsyncProviderTest {
     private void testASyncDatum(AsyncProvider asyncProvider, SharedPreferences sharedPreferences, String key) {
 
         Object initValue = defaultValues.get(key);
-        AsyncInteraction datum = null;
+        AsyncDatum datum = null;
 
         if (initValue instanceof String)
             datum = asyncProvider.new StringDatum(key, (String) initValue);

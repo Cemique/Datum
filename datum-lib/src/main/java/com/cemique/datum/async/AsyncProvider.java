@@ -19,32 +19,32 @@ import java.util.Set;
 @SuppressLint("ApplySharedPref")
 public abstract class AsyncProvider extends Provider {
 
-    public class IntegerDatum extends AsyncDatum<Integer> {
+    public class IntegerDatum extends AsyncDatumWrapper<Integer> {
         public IntegerDatum(@NonNull String key, @Nullable Integer defaultValue) {
             super(new IntegerSource(), key, defaultValue);
         }
     }
-    public class FloatDatum extends AsyncDatum<Float> {
+    public class FloatDatum extends AsyncDatumWrapper<Float> {
         public FloatDatum(@NonNull String key, @Nullable Float defaultValue) {
             super(new FloatSource(), key, defaultValue);
         }
     }
-    public class LongDatum extends AsyncDatum<Long> {
+    public class LongDatum extends AsyncDatumWrapper<Long> {
         public LongDatum(@NonNull String key, @Nullable Long defaultValue) {
             super(new LongSource(), key, defaultValue);
         }
     }
-    public class BooleanDatum extends AsyncDatum<Boolean> {
+    public class BooleanDatum extends AsyncDatumWrapper<Boolean> {
         public BooleanDatum(@NonNull String key, @Nullable Boolean defaultValue) {
             super(new BooleanSource(), key, defaultValue);
         }
     }
-    public class StringDatum extends AsyncDatum<String> {
+    public class StringDatum extends AsyncDatumWrapper<String> {
         public StringDatum(@NonNull String key, @Nullable String defaultValue) {
             super(new StringSource(), key, defaultValue);
         }
     }
-    public class StringSetDatum extends AsyncDatum<Set<String>> {
+    public class StringSetDatum extends AsyncDatumWrapper<Set<String>> {
         public StringSetDatum(@NonNull String key, @Nullable Set<String> defaultValue) {
             super(new StringSetSource(), key, defaultValue);
         }

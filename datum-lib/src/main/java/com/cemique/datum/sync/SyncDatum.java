@@ -1,56 +1,18 @@
 package com.cemique.datum.sync;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
-import com.cemique.datum.Assertion;
-import com.cemique.datum.DatumSource;
+import com.cemique.datum.Datum;
 
 /**
- * Base class for different types of sync datums.
+ * User interactions with synchronous datum.
  */
-class SyncDatum<T> implements SyncInteraction<T> {
+public interface SyncDatum<T> extends Datum<T> {
 
-    private DatumSource<T> datumSource;
-    private String key;
-    private T defaultValue;
-    private T value;
+    T getValue();
 
-    SyncDatum(DatumSource<T> datumSource, @NonNull String key, @Nullable T defaultValue) {
-        this.datumSource = datumSource;
-        this.key = key;
-        this.defaultValue = defaultValue;
-    }
+    void setValue(@NonNull T t);
 
-    @Override
-    public final T getValue() {
-        if(value == null)
-            value = datumSource.getValue(key, defaultValue);
-        return value;
-    }
-
-    @Override
-    public final void setValue(@NonNull T t) {
-        Assertion.assertNonNull(t);
-
-        datumSource.setValue(key, t);
-        value = t;
-    }
-
-    @Override
-    public final void clear() {
-        datumSource.clear();
-        value = defaultValue;
-    }
-
-    @Override
-    public final String getKey() {
-        return key;
-    }
-
-    @Override
-    public final T getDefaultValue() {
-        return defaultValue;
-    }
+    void clear();
 
 }

@@ -7,7 +7,7 @@ import androidx.arch.core.util.Function;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.cemique.datum.async.AsyncInteraction;
+import com.cemique.datum.async.AsyncDatum;
 import com.cemique.datum.secure.SecureProviderModified;
 
 import org.junit.Test;
@@ -77,7 +77,7 @@ public class SecureProviderTest {
     private void testSecureDatum(SecureProviderModified secureProvider, SharedPreferences sharedPreferences, String key) {
 
         Object initValue = defaultValues.get(key);
-        AsyncInteraction datum = null;
+        AsyncDatum datum = null;
         Function<String, Object> datum_stringToValue;
 
         if (initValue instanceof String) {
@@ -115,7 +115,7 @@ public class SecureProviderTest {
         });
         datum.setValue(newValues.get(key));
         datum.getValue(value -> {
-            AsyncInteraction datum2 = null;
+            AsyncDatum datum2 = null;
             if (initValue instanceof String)
                 datum2 = secureProvider.new StringDatumModified(key, (String) initValue);
             else if (initValue instanceof Integer)

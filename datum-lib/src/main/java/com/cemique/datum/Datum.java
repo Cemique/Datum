@@ -3,7 +3,7 @@ package com.cemique.datum;
 /**
  * Super interface for user interaction with datums.
  */
-public interface Interaction<T> {
+public interface Datum<T> {
 
     /**
      * @return Key of the datum.
