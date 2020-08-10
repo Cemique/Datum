@@ -1,3 +1,5 @@
+[ ![Download](https://api.bintray.com/packages/cemique/Maven-repo/com.cemique.datum/images/download.svg) ](https://bintray.com/cemique/Maven-repo/com.cemique.datum/_latestVersion)
+
 # Datum
 Android SharedPreferences helper
 
