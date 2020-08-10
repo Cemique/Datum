@@ -44,11 +44,14 @@ AsyncProvider asyncProvider = new AsyncProvider() {
     }
 };
 AsyncDatum<Float> floatDatum = asyncProvider.new FloatDatum("key", 3.141592f);
+floatDatum.getValue(value->{
+    //value is restored (if no data was saved then 3.141592f)
+});
 floatDatum.setValue(8203f, ()->{
-    //value is saved
+    //value is saved (8203f)
 });
 floatDatum.getValue(value->{
-    //value is restored
+    //value is restored (8203f)
 });
 floatDatum.clear(()->{
     //datum is removed
@@ -88,11 +91,14 @@ Then use it:
 SecureDatum<Set<String>> stringSetDatum = secureProvider.new StringSetDatum("key", null);
 Set<String> newStringSet = new HashSet<>();
 newStringSet.add("new value");
+stringSetDatum.getValue(value -> {
+    //value is restored (if no data was saved then null)
+});
 stringSetDatum.setValue(newStringSet, () -> {
-    //value is saved
+    //value is saved (newStringSet)
 });
 stringSetDatum.getValue(value -> {
-    //value is restored
+    //value is restored (newStringSet)
 });
 stringSetDatum.clear(()->{
     //datum is removed
