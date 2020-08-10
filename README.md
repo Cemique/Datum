@@ -8,7 +8,19 @@ To use [SharedPreferences api](https://developer.android.com/reference/android/c
 * **Synchronous vs Asynchronous**: Both supported. The most ui-blocking events happen in SharedPreferences' inner file io but some other processes have also been taken care of.
 * **Security**: One can use encryption in order to provide higher levels of data safety. It's possible to implement a custom cipher to protect the saved data.
 
+## Download (Gradle)
+
+```gradle
+repositories {
+  jcenter()
+}
+
+dependencies {
+  implementation 'com.cemique.datum:datum-lib:1.0'
+}
+```
 ## Usage
+
 ### Synchronous
 ```java
 SyncProvider syncProvider = new SyncProvider() {
