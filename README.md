@@ -57,6 +57,8 @@ floatDatum.clear(()->{
 
 ### Secure
 Secure datums use async datums behind the scenes. To save datums they are converted to string and then encrypted using cipher functions, the same in reverse direction occurs when being restored.
+
+To provide your desired cipher:
 ```java
 DeterministicCipher keyCipher = new DeterministicCipher(){...};
 Cipher valueCipher = new Cipher(){...};
