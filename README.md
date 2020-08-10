@@ -55,7 +55,12 @@ SecureProvider secureProvider = new SecureProvider(keyCipher, valueCipher) {
     }
 };
 ```
-Or you may use the default constructor, which is not recommended:
+You can also make use of DefaultCipher which transforms with 'AES/CBC/PKCS5Padding':
+```java
+DeterministicCipher defaultCipher = new DefaultCipher.Builder().setPassword(...).setIv(...).build();
+...
+```
+Or you may use the default constructor of SecureProvider, which is not recommended:
 ```java
 SecureProvider secureProvider = new SecureProvider() {
     @Override
