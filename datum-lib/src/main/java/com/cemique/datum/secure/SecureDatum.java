@@ -143,6 +143,7 @@ abstract class SecureDatum<T> implements AsyncInteraction<T> {
             });
         }
 
+
         @Override
         public void setValue(@NonNull String t, @Nullable DoneCallback onSetValue) {
             Looper looper = Looper.myLooper();

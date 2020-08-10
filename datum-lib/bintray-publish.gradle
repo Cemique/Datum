@@ -1,7 +1,7 @@
 apply plugin: 'com.jfrog.bintray'
 
 group 'com.cemique.datum'
-version '1.0'
+version project.ext.versionName
 
 project.ext {
     mavGitUrl = 'https://github.com/Cemique/Datum.git'

@@ -1,15 +1,22 @@
 apply plugin: 'com.android.library'
 
+project.ext{
+    versionCode = 1
+    versionName = "1.0"
+}
+
 android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
 
+    def _versionCode = project.ext.versionCode
+    def _versionName = project.ext.versionName
 
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode _versionCode
+        versionName _versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
