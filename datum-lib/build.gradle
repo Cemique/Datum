@@ -28,6 +28,7 @@ android {
 
 }
 
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -38,3 +39,5 @@ dependencies {
     
     implementation 'com.google.code.gson:gson:2.8.6'
 }
+
+apply from: 'bintray-publish.gradle'

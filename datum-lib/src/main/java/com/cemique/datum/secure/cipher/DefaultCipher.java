@@ -40,21 +40,36 @@ public class DefaultCipher implements com.cemique.datum.secure.cipher.Determinis
         private String password = "12345678";
         private byte[] iv = new byte[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,};
 
+        /**
+         * @param encoding Encoding of clean messages.
+         * @return This builder.
+         */
         public Builder setEncoding(String encoding) {
             this.encoding = encoding;
             return this;
         }
 
+        /**
+         * @param password
+         * @return This builder.
+         */
         public Builder setPassword(String password) {
             this.password = password;
             return this;
         }
 
+        /**
+         * @param iv
+         * @return This builder.
+         */
         public Builder setIv(@Size(16) byte[] iv){
             this.iv = iv;
             return this;
         }
 
+        /**
+         * @return DefaultCipher.
+         */
         public DefaultCipher build() {
             return new DefaultCipher(encoding, password, iv);
         }

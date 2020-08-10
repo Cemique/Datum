@@ -1,0 +1,40 @@
+apply plugin: 'com.jfrog.bintray'
+
+group 'com.cemique.datum'
+version '1.0'
+
+project.ext {
+    mavGitUrl = 'https://github.com/Cemique/Datum.git'
+    mavProjectName = 'Datum'
+    mavLibraryLicenses = ["Apache-2.0":'http://www.apache.org/licenses/LICENSE-2.0.txt']
+    mavLibraryDescription = "Android ShapredPreferences helper"
+    mavPublishToMavenLocal = true
+    mavSiteUrl = 'https://github.com/Cemique/Datum'
+}
+
+def properties = new Properties()
+properties.load(new FileInputStream(file("local.properties")))
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    publications = ['mavenPublish']
+    configurations = ['archives']
+    override = true
+    pkg {
+        repo = 'Maven-repo'
+        name = 'com.cemique.datum'
+        description = "Android ShapredPreferences helper"
+        publicDownloadNumbers = true
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/Cemique/Datum'
+        version {
+            name = this.version
+            desc = "Version ${this.version}"
+            released = new Date()
+            vcsTag = this.version
+        }
+    }
+}
+
+apply from: 'https://raw.githubusercontent.com/sky-uk/gradle-maven-plugin/master/gradle-mavenizer.gradle'
