@@ -3,14 +3,12 @@ Android SharedPreferences helper
 
 To use [SharedPreferences api](https://developer.android.com/reference/android/content/SharedPreferences) in a better way.
 
-Features
---------
+## Features
 * **Generic objects**: Different types of SharedPreferences can be used in a generic way. SharedPreferences' supported data types include Integer, Long, Float, Boolean, String & StringSet.
 * **Synchronous vs Asynchronous**: Both supported. The most ui-blocking events happen in SharedPreferences' inner file io but some other processes have also been taken care of.
 * **Security**: One can use encryption in order to provide higher levels of data safety. It's possible to implement a custom cipher to protect the saved data.
 
-Usage
------
+## Usage
 ### Synchronous
 ```java
 SyncProvider syncProvider = new SyncProvider() {
@@ -57,7 +55,12 @@ SecureProvider secureProvider = new SecureProvider(keyCipher, valueCipher) {
     }
 };
 ```
-Or you may use the default constructor, which is not recommended:
+You can also make use of DefaultCipher which transforms with 'AES/CBC/PKCS5Padding':
+```java
+DeterministicCipher defaultCipher = new DefaultCipher.Builder().setPassword(...).setIv(...).build();
+...
+```
+Or you may use the default constructor of SecureProvider, which is not recommended:
 ```java
 SecureProvider secureProvider = new SecureProvider() {
     @Override
@@ -81,5 +84,20 @@ stringSetDatum.clear(()->{
     //datum is removed
 });
 ```
-#### Contribution
+## Contribution
 All kinds of contributions are welcomed.
+
+## License
+Copyright 2020 Cemique
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
